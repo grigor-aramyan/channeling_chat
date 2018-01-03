@@ -1,0 +1,124 @@
+var _user$project$Main$subscriptions = function (model) {
+	return _elm_lang$core$Platform_Sub$none;
+};
+var _user$project$Main$messageView = function (message) {
+	return A2(
+		_elm_lang$html$Html$li,
+		{ctor: '[]'},
+		{
+			ctor: '::',
+			_0: _elm_lang$html$Html$text(message.body),
+			_1: {ctor: '[]'}
+		});
+};
+var _user$project$Main$topicView = function (topic) {
+	return A2(
+		_elm_lang$html$Html$li,
+		{ctor: '[]'},
+		{
+			ctor: '::',
+			_0: A2(
+				_elm_lang$html$Html$h4,
+				{ctor: '[]'},
+				{
+					ctor: '::',
+					_0: _elm_lang$html$Html$text(topic.title),
+					_1: {ctor: '[]'}
+				}),
+			_1: {ctor: '[]'}
+		});
+};
+var _user$project$Main$view = function (model) {
+	return A2(
+		_elm_lang$html$Html$div,
+		{ctor: '[]'},
+		{
+			ctor: '::',
+			_0: A2(
+				_elm_lang$html$Html$ul,
+				{ctor: '[]'},
+				A2(_elm_lang$core$List$map, _user$project$Main$messageView, model.currentTopic.messageList)),
+			_1: {
+				ctor: '::',
+				_0: A2(
+					_elm_lang$html$Html$ul,
+					{
+						ctor: '::',
+						_0: _elm_lang$html$Html_Attributes$style(
+							{
+								ctor: '::',
+								_0: {ctor: '_Tuple2', _0: 'float', _1: 'right'},
+								_1: {ctor: '[]'}
+							}),
+						_1: {ctor: '[]'}
+					},
+					A2(_elm_lang$core$List$map, _user$project$Main$topicView, model.topicList)),
+				_1: {ctor: '[]'}
+			}
+		});
+};
+var _user$project$Main$update = F2(
+	function (msg, model) {
+		var _p0 = msg;
+		return {ctor: '_Tuple2', _0: model, _1: _elm_lang$core$Platform_Cmd$none};
+	});
+var _user$project$Main$Model = F2(
+	function (a, b) {
+		return {topicList: a, currentTopic: b};
+	});
+var _user$project$Main$Topic = F2(
+	function (a, b) {
+		return {title: a, messageList: b};
+	});
+var _user$project$Main$Message = function (a) {
+	return {body: a};
+};
+var _user$project$Main$initialModel = A2(
+	_user$project$Main$Model,
+	{
+		ctor: '::',
+		_0: A2(
+			_user$project$Main$Topic,
+			'topic1',
+			{
+				ctor: '::',
+				_0: _user$project$Main$Message('message1'),
+				_1: {
+					ctor: '::',
+					_0: _user$project$Main$Message('message2'),
+					_1: {
+						ctor: '::',
+						_0: _user$project$Main$Message('message3'),
+						_1: {ctor: '[]'}
+					}
+				}
+			}),
+		_1: {
+			ctor: '::',
+			_0: A2(
+				_user$project$Main$Topic,
+				'topic2',
+				{ctor: '[]'}),
+			_1: {ctor: '[]'}
+		}
+	},
+	A2(
+		_user$project$Main$Topic,
+		'topic1',
+		{
+			ctor: '::',
+			_0: _user$project$Main$Message('message1'),
+			_1: {
+				ctor: '::',
+				_0: _user$project$Main$Message('message2'),
+				_1: {
+					ctor: '::',
+					_0: _user$project$Main$Message('message3'),
+					_1: {ctor: '[]'}
+				}
+			}
+		}));
+var _user$project$Main$init = {ctor: '_Tuple2', _0: _user$project$Main$initialModel, _1: _elm_lang$core$Platform_Cmd$none};
+var _user$project$Main$main = _elm_lang$html$Html$program(
+	{init: _user$project$Main$init, update: _user$project$Main$update, view: _user$project$Main$view, subscriptions: _user$project$Main$subscriptions})();
+var _user$project$Main$DumbMsg = {ctor: 'DumbMsg'};
